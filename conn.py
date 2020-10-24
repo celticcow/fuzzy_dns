@@ -16,7 +16,9 @@ class conn(object):
         self.source = source
         self.dest = dest
         self.port = port
-        self.count = 0
+        self.count = 1
+        self.metatag = ""
+        
 
     #modifiers
     def set_source(self, source):
@@ -31,6 +33,9 @@ class conn(object):
     def increment_count(self):
         self.count = self.count + 1
     
+    def set_metatag(self, tag):
+        self.metatag = tag
+    
     #accessors
     def get_source(self):
         return(self.source)
@@ -43,6 +48,16 @@ class conn(object):
 
     def get_count(self):
         return(self.count)
+    
+    def get_metatag(self):
+        return(self.metatag)
 
     def print_conn(self):
-        print(self.source + " -> " + self.dest + " : " + self.port + " occured " + self.count + " times")
+        print(self.source + " -> " + self.dest + " : " + self.port + " occured " + str(self.count) + " times" + " | " + self.metatag)
+    
+    #compare functions
+    def conn_compare(self, s, d, p):
+        if((self.source == s) and (self.dest == d) and (self.port == p)):
+            return(True)
+        else:
+            return(False)
